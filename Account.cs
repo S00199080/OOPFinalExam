@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPFinalExam
 {
+    //https://github.com/S00199080/OOPFinalExam Link to GitHub Repository
     public abstract class Account
     {
         public string FirstName { get; set; }
@@ -13,51 +14,59 @@ namespace OOPFinalExam
         public double Balance { get; set; }
         public double InterestDate { get; set; }
 
+        //deposit Method
         public void Deposit()
         { 
             
         }
 
+        //withdraw Method
         public void Withdraw()
         {
 
         }
 
+        //abstract method to calculate interest
         public abstract void CalculateInterest(double interest);               
     }
-
+        //new class CurrentAccount inherits properties from Account class
     public class CurrentAccount : Account
     {
-        public double InterestRate { get; set; }
-        public CurrentAccount(string fname, string lname, double balance, double interestdate,double interestrate)
+        //interest rate = 3%
+        public double InterestRate = 0.03;
+        public double AccountNumber { get; set; }
+        public CurrentAccount(double accnum, string lname, string fname)
         {
             FirstName = fname;
             LastName = lname;
-            Balance = balance;
-            InterestDate = interestdate;
-            InterestRate = interestrate;
-            interestrate = 0.06;
+            AccountNumber = accnum;         
         }
 
         public override void CalculateInterest(double interest)
-        {
+        {            
             interest = InterestRate * Balance;
         }
 
+        //Tostring to format the returned string
+        public override string ToString()
+        {
+            
+            return string.Format($"{AccountNumber}-{LastName} {FirstName}");
+            
+        }
 
     }
 
+    //new class SavingsAccount inherits properties from Account class
     public class SavingsAccount : Account
     {
-        public double InterestRate { get; set; }
-        public SavingsAccount(string fname, string lname, double balance, double interestdate, double interestrate)
+        public double InterestRate = 0.06;
+        public double AccountNumber { get; set; }
+        public SavingsAccount(double accnum, string lname, string fname)
         {
             FirstName = fname;
             LastName = lname;
-            Balance = balance;
-            InterestDate = interestdate;
-            InterestRate = interestrate;
-            interestrate = 0.03;
+            AccountNumber = accnum;
         }
 
         public override void CalculateInterest(double interest)
@@ -65,6 +74,10 @@ namespace OOPFinalExam
             interest = InterestRate * Balance;
         }
 
+        public override string ToString()
+        {          
+            return string.Format($"{AccountNumber}-{LastName} {FirstName}");           
+        }
 
     }
 }
