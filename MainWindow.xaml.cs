@@ -15,14 +15,24 @@ using System.Windows.Shapes;
 
 namespace OOPFinalExam
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    //https://github.com/S00199080/OOPFinalExam Link to GitHub Repository
     public partial class MainWindow : Window
     {
+        public List<Account> account;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Initialise the collections
+            account = new List<Account>();
+            
+
+           
+
+
         }
     }
 }
